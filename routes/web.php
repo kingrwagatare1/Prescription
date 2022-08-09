@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\patient\patientController;
+use App\Http\Controllers\doctor\doctorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::POST('save_prescription',[ doctorController::class,'save_prescription']);
+Route::POST('save_patient',[ patientController::class,'save_patient']);

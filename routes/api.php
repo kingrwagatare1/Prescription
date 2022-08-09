@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+//use App\Http\Controllers\doctor\doctorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('prescription',[\App\Http\Controllers\prescriptions\prescriptionsController::class,'prescriptions']);
+Route::POST('save_patient',[\App\Http\Controllers\patients\patientsController::class,'save_patient']);
+Route::POST('save_prescription',[\App\Http\Controllers\doctors\doctorsController::class,'save_prescription']);
+Route::POST('save_prescriptions',[\App\Http\Controllers\prescriptions\prescriptionsController::class,'save_prescriptions']);

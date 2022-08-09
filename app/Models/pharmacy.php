@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\pharmacist;
+use App\Models\medecine;
 
-class User extends Authenticatable
+class Pharmacy extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,35 +20,19 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'prescriptName',
-        'prescriptId',
-        'details',
-        'doctor',
-        'doctorContact',
-        'speciality',
-        'hospital',
-        'time',
-        'status',
-        'pharmacy',
+        'pharmacy_id',
+        'location',
+        'pharmacyContact',
+        'pharmacyEmail',
+        'medecine_name',
+        'pharmacist_id',
+        'pharmacyName',
 
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    ];  
+    public function pharmacist(){
+        return $this->belongsTo(pharmacist::class);
+    }
+    public function medecin(){
+        return $this->belongsTo(medecine::class);
+    }
 }

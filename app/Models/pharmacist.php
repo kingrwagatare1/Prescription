@@ -2,30 +2,26 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use App\Models\insurance;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\pharmacy;
 
-class Patient extends Authenticatable
+class pharmacist extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $primaryKey = 'patient_id';
     protected $fillable = [
-        'patient_id',
-        'patientName',
+        'pharmacist_id',
+        'pharmacistName',
         'DOB',
-        'contact',
         'email',
+        'contact',
         'password',
+        
     ];
 
     /**
@@ -46,7 +42,8 @@ class Patient extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function patients(){
-        return $this->hasMany(Patient::class);
+    public function pharmacies(){
+        return $this->hasMany(pharmacy::class);
+
     }
 }
