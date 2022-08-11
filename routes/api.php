@@ -18,7 +18,33 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('prescription',[\App\Http\Controllers\prescriptions\prescriptionsController::class,'prescriptions']);
-Route::POST('save_patient',[\App\Http\Controllers\patients\patientsController::class,'save_patient']);
-Route::POST('save_prescription',[\App\Http\Controllers\doctors\doctorsController::class,'save_prescription']);
+
+    //route of patients
+Route::POST('register_patient',[\App\Http\Controllers\patients\patientsController::class,'register_patient']);
+Route::POST('login_patient',[\App\Http\Controllers\patients\patientsController::class,'login_patient']);
+Route::middleware('auth:sanctum')->post('logout',[\App\Http\Controllers\Patient\patientsController::class,'logout']);
+
+    //route of hospital
+Route::POST('save_hospital',[\App\Http\Controllers\Hospital\hospitalController::class,'save_hospital']);
+    
+    //route of doctor
+Route::POST('register_doctor',[\App\Http\Controllers\doctors\doctorsController::class,'register_doctor']);
+Route::POST('login_doctors',[\App\Http\Controllers\doctors\doctorsController::class,'login_doctors']);
+Route::middleware('auth:sanctum')->post('logout',[\App\Http\Controllers\doctors\doctorsController::class,'logout']);
+
+    //route of insurance
+Route::POST('save_insurance',[\App\Http\Controllers\Insurance\insuranceController::class,'save_insurance']);
+
+    //route of pharmacist
+Route::POST('register_pharmacist',[\App\Http\Controllers\Pharmacist\pharmacistController::class,'register_pharmacist']);
+Route::POST('login_pharmacist',[\App\Http\Controllers\Pharmacist\pharmacistController::class,'login_pharmacist']);
+Route::middleware('auth:sanctum')->post('logout',[\App\Http\Controllers\Pharmacist\pharmacistController::class,'logout']);
+
+    //route of pharmacy
+Route::POST('save_pharmacy',[\App\Http\Controllers\Pharmacy\pharmacyController::class,'save_pharmacy']);
+
+    //route of medecine
+Route::POST('save_medecine',[\App\Http\Controllers\Medecine\medecineController::class,'save_medecine']);
+
+        //prescription routes
 Route::POST('save_prescriptions',[\App\Http\Controllers\prescriptions\prescriptionsController::class,'save_prescriptions']);

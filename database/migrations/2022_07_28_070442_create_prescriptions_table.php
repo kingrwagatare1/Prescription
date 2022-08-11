@@ -14,18 +14,19 @@ return new class extends Migration
     public function up()
     {
         Schema::create('prescriptions', function (Blueprint $table) {
-            $table->id();
-            $table->string('prescription_id')->unique();
-            $table->foreignId('insurances_id');
+            
+            $table->string('prescription_id');
+            $table->foreignId('insurance_id');
             $table->string('patientName',20);
             $table->string('details',50);
-            $table->foreignId('doctors_id');
+            $table->foreignId('doctor_id');
             $table->string('doctorContact',10);
             $table->string('speciality',10);
-            $table->foreignId('hospitals_id');
-            $table->string('status',10);
-            $table->foreignId('pharmacies_id');
-            $table->foreignId('patients_id');
+            $table->foreignId('hospital_id');
+            $table->enum("status",["Approved","Pending"]);
+            $table->foreignId('pharmacy_id');
+            $table->foreignId('patient_id');
+            $table->primary('prescription_id');
             $table->timestamps();
         });
     }

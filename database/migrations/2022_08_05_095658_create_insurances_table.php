@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('insurances', function (Blueprint $table) {
-            $table->id();
-            $table->string('insurance_id')->unique();
-            $table->string('insuranceName',25)->nullable();
+            $table->integer('insurance_id');
+            $table->string('insuranceName',25);
+            $table->primary('insurance_id');
             $table->timestamps();
         });
     }

@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\pharmacy;
 class medecine extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -18,8 +18,10 @@ class medecine extends Model
     protected $fillable = [
         'medecine_id',
         'medecineName',
-        
-
+        'pharmacy_id',
     ];
+    public function medecines(){
+        return $this->belongsTo(medecine::class);
+    }
    
 }

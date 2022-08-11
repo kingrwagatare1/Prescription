@@ -15,10 +15,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('hospitals', function (Blueprint $table) {
-            $table->id();
-            $table->string('hospital_id')->unique();
+            $table->integer('hospital_id');
             $table->string('hospitalName');
             $table->string('hospitalAddress',25);
+            $table->primary('hospital_id');
             $table->timestamps();
         });
         

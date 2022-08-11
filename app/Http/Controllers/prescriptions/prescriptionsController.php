@@ -8,26 +8,27 @@ use App\Models\Prescription;
 
 class prescriptionsController extends Controller
 {
-    public function index(){
-        $prescriptions = Prescription::all();
-        return response()->json(['prescriptions'=>$prescriptions],200);
-    }
+    // public function index(){
+    //     $prescriptions = Prescription::all();
+    //     return response()->json(['prescriptions'=>$prescriptions],200);
+    // }
     function save_prescriptions(Request $request){
     
         $prescr = new Prescription();
-        $prescr-> prescriptionName =$request -> prescriptionName;
+        $prescr-> prescription_id =$request -> prescription_id;
+        $prescr-> insurance_id =$request -> insurance_id;
+        $prescr-> patient_id =$request -> patient_id;
+        $prescr-> patientName =$request -> patientName;
         $prescr-> details =$request ->details;
-        $prescr->doctor =$request ->doctor;
+        $prescr->doctor_id =$request ->doctor_id;
         $prescr->doctorContact =$request -> doctorContact;
         $prescr-> speciality =$request -> speciality;
-        $prescr->hospital =$request ->hospital;
+        $prescr->hospital_id =$request ->hospital_id;
         $prescr->status =$request ->status;
-        $prescr->pharmacy =$request -> pharmacy;
+        $prescr->pharmacy_id =$request -> pharmacy_id;
         $prescr->save();
+
         return response()->json(["message"=>'saved successfully'],200);
 
     }
-    
-
-
 }

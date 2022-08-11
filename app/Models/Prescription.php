@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\insurance;
@@ -13,9 +14,9 @@ use App\Models\Hospital;
 use App\Models\pharmacy;
 use App\Models\Patient;
 
-class Prescription extends Authenticatable
+class Prescription extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -32,7 +33,7 @@ class Prescription extends Authenticatable
         'doctor_id',
         'doctorContact',
         'speciality',
-        'hospital_name',
+        'hospital_id',
         'status',
         'pharmacy_id',
 
@@ -63,7 +64,7 @@ class Prescription extends Authenticatable
     }
     public function doctor(){
 
-        return $this->hasMany(Doctor::class);
+        return $this->hasMany(doctor::class);
     }
     public function hospital(){
 

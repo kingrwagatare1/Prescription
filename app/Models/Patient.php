@@ -25,6 +25,7 @@ class Patient extends Authenticatable
         'DOB',
         'contact',
         'email',
+        'insurance_id',
         'password',
     ];
 

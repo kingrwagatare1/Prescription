@@ -19,12 +19,14 @@ class Doctor extends Authenticatable
      * @var array<int, string>
      */
     protected $table = 'doctors';
+    protected $primaryKey = 'doctor_id';
+    public $incrementing = false;
     protected $fillable = [
         'doctor_id',
         'doctorName',
         'address',
         'speciality',
-        'hospitalName',
+        'hospital_id',
         'doctorContact',
         'DOB',
         'email',
