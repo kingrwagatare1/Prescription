@@ -3,6 +3,11 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\doctor;
+use App\Models\insurance;
+use App\Models\Hospital;
+use App\Models\pharmacy;
+use App\Models\Patient;
 
 return new class extends Migration
 {
@@ -15,18 +20,16 @@ return new class extends Migration
     {
         Schema::create('prescriptions', function (Blueprint $table) {
             
-            $table->string('prescription_id');
-            $table->foreignId('insurance_id');
-            $table->string('patientName',20);
+            $table->id('prescription_id');
+            $table->foreignIdFor(insurance::class);
             $table->string('details',50);
-            $table->foreignId('doctor_id');
+            $table->foreignIdFor(doctor::class);
             $table->string('doctorContact',10);
             $table->string('speciality',10);
-            $table->foreignId('hospital_id');
+            $table->foreignIdFor(Hospital::class);
             $table->enum("status",["Approved","Pending"]);
-            $table->foreignId('pharmacy_id');
-            $table->foreignId('patient_id');
-            $table->primary('prescription_id');
+            $table->foreignIdFor(pharmacy::class);
+            $table->foreignIdFor(Patient::class);
             $table->timestamps();
         });
     }

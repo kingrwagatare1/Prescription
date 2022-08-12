@@ -16,12 +16,11 @@ class medecine extends Model
      */
    
     protected $fillable = [
-        'medecine_id',
         'medecineName',
         'pharmacy_id',
     ];
-    public function medecines(){
-        return $this->belongsTo(medecine::class);
-    }
+    // public function medecines(){
+    //     return $this->belongsTo(medecine::class);
+    // }
    
 }

@@ -19,7 +19,7 @@ class patientsController extends Controller
         function register_patient(Request $request){
         
             $newUser = Patient::create([
-                'patient_id' => $request['patient_id'],
+                
                 'patientName' => $request['patientName'],
                 'DOB' => $request['DOB'],
                 'contact' => $request['contact'],

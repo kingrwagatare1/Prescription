@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\doctor;
-
+use App\Models\Hospital;
 
 return new class extends Migration
 {
@@ -16,10 +16,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('doctors', function (Blueprint $table) {
-            $table->string('doctor_id');
+            $table->id('doctor_id');
             $table->string('doctorName',20);
             $table->string('address',50);
-            $table->foreignId('hospital_id');
+            $table->foreignIdFor(Hospital::class);
             $table->string('speciality',15);
             $table->string('doctorContact',10);
             $table->string('DOB',10);
@@ -28,7 +28,6 @@ return new class extends Migration
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
-            $table->primary('doctor_id');
             $table->timestamps();
         });
     }

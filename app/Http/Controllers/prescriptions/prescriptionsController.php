@@ -15,10 +15,8 @@ class prescriptionsController extends Controller
     function save_prescriptions(Request $request){
     
         $prescr = new Prescription();
-        $prescr-> prescription_id =$request -> prescription_id;
         $prescr-> insurance_id =$request -> insurance_id;
         $prescr-> patient_id =$request -> patient_id;
-        $prescr-> patientName =$request -> patientName;
         $prescr-> details =$request ->details;
         $prescr->doctor_id =$request ->doctor_id;
         $prescr->doctorContact =$request -> doctorContact;

@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\medecine;
+use App\Models\pharmacist;
 
 return new class extends Migration
 {
@@ -14,14 +16,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pharmacies', function (Blueprint $table) {
-            $table->string('pharmacy_id');
+            $table->id('pharmacy_id');
             $table->string('location',20);
             $table->string('pharmacyContact',10);
             $table->string('pharmacyEmail',20)->unique();
-            $table->foreignId('medecine_id');
-            $table->foreignId('pharmacist_id');
+            $table->foreignIdFor(medecine::class); 
+            $table->foreignIdFor(pharmacist::class); 
             $table->string('pharmacyName')->unique();
-            $table->primary('pharmacy_id');
             $table->timestamps();
         });
     }
