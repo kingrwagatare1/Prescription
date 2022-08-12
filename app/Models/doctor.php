@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Hospital;
+
 
 class Doctor extends Authenticatable
 {
@@ -18,14 +18,14 @@ class Doctor extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $table = 'doctors';
+    //protected $table = 'doctors';
+    protected $primaryKey = 'doctor_id';
     protected $fillable = [
-        'doctor_id',
         'doctorName',
         'address',
         'speciality',
-        'hospitalName',
         'doctorContact',
+        'hospital_id',
         'DOB',
         'email',
         'username',
@@ -46,8 +46,8 @@ class Doctor extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function hospitals()
-    {
-        return $this->hasMany(Hospital::class);
-    }
+    // public function hospitals()
+    // {
+    //     return $this->hasMany(Hospital::class);
+    // }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\insurance;
@@ -13,9 +14,9 @@ use App\Models\Hospital;
 use App\Models\pharmacy;
 use App\Models\Patient;
 
-class Prescription extends Authenticatable
+class Prescription extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -24,15 +25,13 @@ class Prescription extends Authenticatable
      */
     protected $table =  'prescriptions';
     protected $fillable = [
-        'prescription_id',
         'insurance_id',
         'patient_id',
-        'patientName',
         'details',
         'doctor_id',
         'doctorContact',
         'speciality',
-        'hospital_name',
+        'hospital_id',
         'status',
         'pharmacy_id',
 
@@ -57,24 +56,24 @@ class Prescription extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function insurance(){
+    // public function insurance(){
 
-        return $this->belongsTo(insurance::class);
-    }
-    public function doctor(){
+    //     return $this->belongsTo(insurance::class);
+    // }
+    // public function doctor(){
 
-        return $this->hasMany(Doctor::class);
-    }
-    public function hospital(){
+    //     return $this->hasMany(doctor::class);
+    // }
+    // public function hospital(){
 
-        return $this->hasMany(Hospital::class);
-    }
-    public function pharmacie(){
+    //     return $this->hasMany(Hospital::class);
+    // }
+    // public function pharmacie(){
 
-        return $this->hasMany(pharmacy::class);
-    }
-    public function patient(){
+    //     return $this->hasMany(pharmacy::class);
+    // }
+    // public function patient(){
 
-        return $this->hasMany(Patient::class);
-    }
+    //     return $this->hasMany(Patient::class);
+    // }
 }
