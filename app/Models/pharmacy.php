@@ -23,7 +23,6 @@ class pharmacy extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'pharmacy_id',
         'location',
         'pharmacyContact',
         'pharmacyEmail',
@@ -32,10 +31,10 @@ class pharmacy extends Model
         'pharmacyName',
 
     ];  
-    public function pharmacist(){
-        return $this->belongsTo(pharmacist::class);
-    }
-    public function medecin(){
-        return $this->belongsTo(medecine::class);
-    }
+    // public function pharmacist(){
+    //     return $this->belongsTo(pharmacist::class);
+    // }
+    // public function medecin(){
+    //     return $this->belongsTo(medecine::class);
+    // }
 }

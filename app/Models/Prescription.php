@@ -25,10 +25,8 @@ class Prescription extends Model
      */
     protected $table =  'prescriptions';
     protected $fillable = [
-        'prescription_id',
         'insurance_id',
         'patient_id',
-        'patientName',
         'details',
         'doctor_id',
         'doctorContact',
@@ -58,24 +56,24 @@ class Prescription extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function insurance(){
+    // public function insurance(){
 
-        return $this->belongsTo(insurance::class);
-    }
-    public function doctor(){
+    //     return $this->belongsTo(insurance::class);
+    // }
+    // public function doctor(){
 
-        return $this->hasMany(doctor::class);
-    }
-    public function hospital(){
+    //     return $this->hasMany(doctor::class);
+    // }
+    // public function hospital(){
 
-        return $this->hasMany(Hospital::class);
-    }
-    public function pharmacie(){
+    //     return $this->hasMany(Hospital::class);
+    // }
+    // public function pharmacie(){
 
-        return $this->hasMany(pharmacy::class);
-    }
-    public function patient(){
+    //     return $this->hasMany(pharmacy::class);
+    // }
+    // public function patient(){
 
-        return $this->hasMany(Patient::class);
-    }
+    //     return $this->hasMany(Patient::class);
+    // }
 }

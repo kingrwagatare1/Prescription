@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\medecine;
-
+use App\Models\pharmacy;
 return new class extends Migration
 {
     /**
@@ -15,10 +15,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('medecines', function (Blueprint $table) {
-            $table->string('medecine_id');
+            $table->id('medecine_id');
             $table->string('medecineName');
-            $table->foreignId('pharmacy_id');
-            $table->primary('medecine_id');
+            $table->foreignIdFor(pharmacy::class);
             $table->timestamps();
         });
     }

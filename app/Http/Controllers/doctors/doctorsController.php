@@ -14,12 +14,11 @@ class doctorsController extends Controller
     function register_doctor(Request $request){
         
         $newUser = doctor::create([
-            'doctor_id' => $request['doctor_id'],
             'doctorName' => $request['doctorName'],
             'address' => $request['address'],
             'speciality' => $request['speciality'],
-            'hospital_id' => $request['hospital_id'],
             'doctorContact' => $request['doctorContact'],
+            'hospital_id' => $request['hospital_id'],
             'DOB' => $request['DOB'],
             'email' => $request['email'],
             'username' => $request['username'],

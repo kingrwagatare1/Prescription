@@ -16,7 +16,6 @@ class hospitalController extends Controller
        
         // ]) ;
             $hospital = new Hospital();
-            $hospital-> hospital_id =$request -> hospital_id;
             $hospital-> hospitalName =$request -> hospitalName;
             $hospital-> hospitalAddress =$request ->hospitalAddress;
             $hospital->save();

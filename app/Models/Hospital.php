@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Doctor;
 
 class Hospital extends Model
 {
@@ -17,10 +16,7 @@ class Hospital extends Model
      * @var array<int, string>
      */
     protected $table = 'hospitals';
-    protected $primaryKey = 'hospital_id';
-    public $incrementing = false;
     protected $fillable = [
-        'hospital_id',
         'hospitalName',
         'hospitalAddress',
 

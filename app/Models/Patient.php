@@ -20,7 +20,6 @@ class Patient extends Authenticatable
      */
     protected $primaryKey = 'patient_id';
     protected $fillable = [
-        'patient_id',
         'patientName',
         'DOB',
         'contact',
@@ -47,7 +46,7 @@ class Patient extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function patients(){
-        return $this->hasMany(Patient::class);
-    }
+    // public function patients(){
+    //     return $this->hasMany(Patient::class);
+    // }
 }

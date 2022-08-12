@@ -19,8 +19,8 @@ class pharmacist extends Authenticatable
      */
     protected $primaryKey = 'pharmacist_id';
     protected $fillable = [
-        'pharmacist_id',
         'pharmacistName',
+        'pharmacy_id',
         'DOB',
         'email',
         'contact',
@@ -46,8 +46,8 @@ class pharmacist extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function pharmacies(){
-        return $this->hasMany(pharmacy::class);
+    // public function pharmacies(){
+    //     return $this->hasMany(pharmacy::class);
 
-    }
+    // }
 }

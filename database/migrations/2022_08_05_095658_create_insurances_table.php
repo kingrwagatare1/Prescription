@@ -14,9 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('insurances', function (Blueprint $table) {
-            $table->integer('insurance_id');
+            $table->id('insurance_id');
             $table->string('insuranceName',25);
-            $table->primary('insurance_id');
             $table->timestamps();
         });
     }

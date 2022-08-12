@@ -13,12 +13,11 @@ class pharmacistController extends Controller
     function register_pharmacist(Request $request){
         
         $newUser = pharmacist::create([
-            'pharmacist_id' => $request['pharmacist_id'],
             'pharmacistName' => $request['pharmacistName'],
             'DOB' => $request['DOB'],
             'email' => $request['email'],
             'contact' => $request['contact'],
-           // 'pharmacies_id' => $request['pharmacies_id'],
+            'pharmacy_id' => $request['pharmacy_id'],
             'password'=> Hash::make($request['password']),
         ])->save();
         return response()->json('pharmacist registered successfully');
@@ -37,9 +36,11 @@ class pharmacistController extends Controller
                 
                 return response(['message'=>'Data not Match'],401);
             }
-            $token = $pharmacist->createToken('king')->plainTextToken;
-            return response(['user'=>$pharmacist , 'token'=>$token],201);
-            //      return $user();             
+            $token = $pharmacist->createToken('kenny')->plainTextToken;
+
+           // return $token;
+           return response(['user'=>$pharmacist , 'token'=>$token],201);
+                        
     }
     
        public function logout(Request $request){
