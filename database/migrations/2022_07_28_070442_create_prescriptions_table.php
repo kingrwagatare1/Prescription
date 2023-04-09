@@ -3,6 +3,11 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\doctor;
+use App\Models\insurance;
+use App\Models\Hospital;
+use App\Models\pharmacy;
+use App\Models\Patient;
 
 return new class extends Migration
 {
@@ -14,18 +19,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('prescriptions', function (Blueprint $table) {
-            $table->id();
-            $table->string('prescription_id')->unique();
-            $table->foreignId('insurances_id');
-            $table->string('patientName',20);
+            
+            $table->id('prescription_id');
+            $table->foreignIdFor(insurance::class);
             $table->string('details',50);
-            $table->foreignId('doctors_id');
+            $table->foreignIdFor(doctor::class);
             $table->string('doctorContact',10);
             $table->string('speciality',10);
-            $table->foreignId('hospitals_id');
-            $table->string('status',10);
-            $table->foreignId('pharmacies_id');
-            $table->foreignId('patients_id');
+            $table->foreignIdFor(Hospital::class);
+            $table->enum("status",["Approved","Pending"]);
+            $table->foreignIdFor(pharmacy::class);
+            $table->foreignIdFor(Patient::class);
             $table->timestamps();
         });
     }
